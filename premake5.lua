@@ -45,11 +45,12 @@ project "GameEngine"
     {
         "GLFW",
         "opengl32.lib",
-        "dwmapi.lib"
+        "dwmapi.lib",
+        "vulkan-1.lib"
     }
     
     filter "system:windows"
-        cppdialect "C++20"
+        cppdialect "C++17"
         staticruntime "On"
         systemversion "latest"
     
