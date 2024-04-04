@@ -2,6 +2,7 @@
 
 #include "Event.h"
 
+
 namespace GameEngine {
 
 	class GE_API MouseMovedEvent : public Event
@@ -90,7 +91,7 @@ namespace GameEngine {
 			return ss.str();
 		}
 
-		EVENT_CLASS_TYPE(MouseButtonReleased)
+		EVENT_CLASS_TYPE(MouseBottonReleased)
 	};
 
 }

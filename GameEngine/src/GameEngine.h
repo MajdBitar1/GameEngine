@@ -5,6 +5,7 @@
 // and then include this file in the application so that we don't have to include everything separately
 
 #include "GameEngine/Application.h"
+#include "GameEngine/Layer.h"
 #include "GameEngine/Log.h"
 
 // --------- Entry Point ---------

@@ -10,7 +10,7 @@ namespace GameEngine {
 		WindowClose,WindowResize,WindowFocus,WindowLostFocus,WindowMoved,
 		AppTick, AppUpdate, AppRender,
 		KeyPressed, KeyReleased,
-		MouseButtonPressed, MouseBottonReleased, MouseMoved, MouseSctrolled
+		MouseButtonPressed, MouseBottonReleased, MouseMoved, MouseScrolled
 	};
 
 	enum EventCategory
@@ -19,6 +19,7 @@ namespace GameEngine {
 		EventCategoryApplication	= BIT(0),
 		EventCategoryInput          = BIT(1),
 		EventCategoryKeyboard       = BIT(2),
+		EventCategoryMouse			= BIT(3),
 		EventCategoryMouseButton    = BIT(4)
 	};
 
@@ -29,8 +30,8 @@ namespace GameEngine {
 
 	class GE_API Event
 	{
-		friend class EventDispatcher;
 	public:
+		bool Handled = false;
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
@@ -40,8 +41,6 @@ namespace GameEngine {
 		{
 			return GetCategoryFlags() & category;
 		}
-	protected:
-		bool m_Handled = false;
 	};
 
 	class EventDispatcher
@@ -57,9 +56,9 @@ namespace GameEngine {
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
-			if (m_Event.GetEventType() == T::GetStaitcType())
+			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.m_Handled = func(*(T*)&m_Event);
+				m_Event.Handled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;
