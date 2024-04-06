@@ -7,3 +7,6 @@
 [submodule "GameEngine/vendor/GLFW"]
 	path = GameEngine/vendor/GLFW
 	url = https://github.com/MajdBitar1/glfw
+[submodule "GameEngine/vendor/imgui"]
+	path = GameEngine/vendor/imgui
+	url = https://github.com/MajdBitar1/imgui
